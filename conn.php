@@ -1,9 +1,13 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+ini_set("log_errors", 1);
+ini_set("error_log", __DIR__."/errors/php-error-".date('Y-m-d').".log");
 error_reporting(E_ALL ^ E_DEPRECATED);
 $db_name = "perpusweb";
 
-mysql_connect("localhost","root","");
+mysql_connect("my-stage.cciibmbisxy8.ap-southeast-1.rds.amazonaws.com","admin","anel2204");
 mysql_select_db($db_name);
 
 //fungsi format rupiah 

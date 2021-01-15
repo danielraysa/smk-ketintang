@@ -18,7 +18,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 		if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
 		$sql="INSERT INTO admin(user_id,username,password,fullname,gambar) VALUES
 		('$user_id','$username','$password','$fullname','$gambar')";
-		$res=mysqli_query($koneksi,$sql) or die (mysqli_error($koneksi));
+		$res=mysql_query($sql) or die (mysql_error($koneksi));
 		echo "Gambar berhasil dikirim ke direktori".$gambar;
 		echo "<h3><a href='input-admin.php'> Input Lagi</a></h3>";
 		echo "<h3><a href='admin.php'> Data Admin</a></h3>";	   
@@ -33,7 +33,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 	$gambar = '';
 	$sql="INSERT INTO admin(user_id,username,password,fullname,gambar) VALUES
 	('$user_id','$username','$password','$fullname','$gambar')";
-	$res=mysqli_query($koneksi,$sql) or die (mysqli_error($koneksi));
+	$res=mysql_query($sql) or die (mysql_error($koneksi));
 	//echo "Gambar berhasil dikirim ke direktori".$gambar;
 	echo "<h3><a href='input-admin.php'> Input Lagi</a></h3>";
 	echo "<h3><a href='admin.php'> Data Admin</a></h3>";

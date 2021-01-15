@@ -331,13 +331,13 @@ tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " +
                     <tbody>
                     <tr>
                     <td><?php echo $data1['nama']; ?></td>
-                    <!--<td><?php echo $data1['jk']; ?></td>-->
+                    <!--<td><?php // echo $data1['jk']; ?></td>-->
                     <td><?php echo $data1['kelas'];?></td>
-					<!-- <td><?php echo $data1['jurusan']; ?></td> -->
+					<!-- <td><?php // echo $data1['jurusan']; ?></td> -->
                     <td><?php echo $data1['tgl_kunjung'];?></td>
                     <td><?php echo $data1['jam_kunjung'];?></td>
                     <td><?php echo $data1['perlu1'];?></td>
-                    <!--<td><?php echo $data1['cari'];?></td>-->
+                    <!--<td><?php // echo $data1['cari'];?></td>-->
                     <?php   
               } 
               ?>

@@ -92,9 +92,9 @@ $_SESSION['start_time'] = time();
                                   <select class="form-control select2" name="buku" id="buku" required>
                                   <option value=""> -- Pilih Salah Satu --</option>
                                 <?php
-                                    $sql = mysqli_query($koneksi,"SELECT * FROM data_buku ORDER BY id ASC");
-                                    if(mysqli_num_rows($sql) != 0){
-                                    while($data = mysqli_fetch_assoc($sql)){
+                                    $sql = mysql_query("SELECT * FROM data_buku ORDER BY id ASC");
+                                    if(mysql_num_rows($sql) != 0){
+                                    while($data = mysql_fetch_assoc($sql)){
                                     echo '<option value='.$data['id'].'-'.$data['judul'].'>'.$data['judul'].'</option>'; }
                                     ?>
                                   </select>
@@ -108,9 +108,9 @@ $_SESSION['start_time'] = time();
                                   <select class="form-control select2" name="nama" id="nama" required>
                                   <option value=""> -- Pilih Salah Satu --</option>
                                 <?php
-                                    $sql = mysqli_query($koneksi,"SELECT * FROM data_anggota ORDER BY id ASC");
-                                    if(mysqli_num_rows($sql) != 0){
-                                    while($data = mysqli_fetch_assoc($sql)){
+                                    $sql = mysql_query("SELECT * FROM data_anggota ORDER BY id ASC");
+                                    if(mysql_num_rows($sql) != 0){
+                                    while($data = mysql_fetch_assoc($sql)){
                                     // echo '<option value='.$data['id'].'-'.$data['no_induk'].'>'.$data['no_induk'].' - '.$data['nama'].'</option>'; }
                                     echo '<option value='.$data['no_induk'].'>'.$data['no_induk'].' - '.$data['nama'].'</option>'; }
                                     }

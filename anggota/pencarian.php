@@ -11,7 +11,7 @@ if (empty($_SESSION['username'])){
     <meta charset="UTF-8">
     <title>Perpustakaan Berbasis Web www.smkketintang.sch.id</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <meta name="description" content="SMK Ketintang">
+    <meta name="description" content="Perpustakaan SMK Ketintang Surabaya">
     <meta name="keywords" content="Perpus, Website, Aplikasi, Perpustakaan, Online">
     <!-- bootstrap 3.0.2 -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -37,15 +37,6 @@ if (empty($_SESSION['username'])){
     <!-- Theme style -->
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-          <![endif]-->
-
           <style type="text/css">
 
           </style>
@@ -54,7 +45,7 @@ if (empty($_SESSION['username'])){
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="index.php" class="logo">
-                <!-- <img src="../img/logo2.png" height="40" width="40" style="margin-bottom: 4px;" />--> Perpustakaan Online
+                <!-- <img src="../img/logo2.png" height="40" width="40" style="margin-bottom: 4px;" /> -->  Perpustakaan Online
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -150,84 +141,75 @@ $_SESSION['start_time'] = time();
                         <div class="col-xs-12">
                             <div class="panel">
                                 <header class="panel-heading">
-                                    <b>Detail Buku</b>
+                                    <b>Data Buku</b>
 
                                 </header>
                                 <!-- <div class="box-header"> -->
                                     <!-- <h3 class="box-title">Responsive Hover Table</h3> -->
-                    <?php
-                    $query = mysql_query("SELECT * FROM data_buku WHERE id='$_GET[kd]'");
-                    $data  = mysql_fetch_array($query);
-                    ?>
+
                                 <!-- </div> -->
                                 <div class="panel-body">
-                      <table id="example" class="table table-hover table-bordered">
-                    <tr>
-                    <!--<td>ID</td>
-                    <td><?php echo $data['id']; ?></td>-->
-                    
-                    </tr>
-                    <tr>
-                    <td width="250">Judul</td>
-                    <td width="500"><?php echo $data['judul']; ?></td>
-					<td rowspan="6"><div class="pull-right image">
-                            <img class="img" src="<?php echo $data['gambar'] != "" ? $data['gambar'] : '../admin/gambar_buku/default.png'; ?>" class="img-rounded" height="200" width="150" alt="User Image" style="border: 3px solid #333333;" />
-                        </div></td>
-                    </tr>
-                    <tr>
-                    <td>Pengarang</td>
-                    <td><?php echo $data['pengarang']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Tahun Terbit</td>
-                    <td><?php echo $data['th_terbit']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Penerbit</td>
-                    <td><?php echo $data['penerbit']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Kategori</td>
-                    <td><?php echo $data['kategori']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Kelas</td>
-                    <td colspan="2"><?php echo $data['kode_klas']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Jumlah Buku</td>
-                    <td colspan="2"><?php echo $data['jumlah_buku']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Lokasi</td>
-                    <td colspan="2"><?php echo $data['lokasi']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Asal Buku</td>
-                    <td colspan="2"><?php echo $data['asal']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Jumlah</td>
-                    <td colspan="2"><?php echo $data['jum_temp']; ?></td>
-                    </tr>
-                    <tr>
-                    <td>Tanggal Input</td>
-                    <td colspan="2"><?php echo $data['tgl_input']; ?></td>
-                    </tr>
-                   </table>
-                  
-                <div class="text-right">
-                <a href="pencarian.php" class="btn btn-sm btn-warning"> Kembali <i class="fa fa-arrow-circle-right"></i></a>
-                </div>  
+                                    <div class="box-tools m-b-15">
+                                    <form action="#" method="GET">
+                                        <div class="input-group">
+                                        <input type='text' class="form-control input-sm" style=""  name="cari" placeholder='Cari berdasarkan Judul / Pengarang / Penerbit' required /> 
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+                                    Rekomendasi : .... , /// ,, ....
                                 </div>
-                            </div><!-- /.box -->
+                            </div>  
                         </div>
                     </div>
+                    
+                    <?php 
+                    if(isset($_GET['cari'])){ 
+                        $cari = $_GET['cari'];
+                        $data = mysql_query("SELECT * FROM data_buku WHERE LOWER(judul) LIKE '%$cari%' OR UPPER(judul) LIKE '%$cari%' OR LOWER(pengarang) LIKE '%$cari%' OR UPPER(pengarang) LIKE '%$cari%' OR LOWER(penerbit) LIKE '%$cari%' OR UPPER(penerbit) LIKE '%$cari%'");
+                    ?>
+                    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel">
+                                <div class="panel-header" style="margin: auto">
+                                </div>
+                                <div class="panel-body table-responsive">
+                                    <div class="row">
+                                    <?php
+                                    $no = 1;
+                                    while($row = mysql_fetch_array($data)) { ?>
+                                        <div class="col-lg-2">
+                                            <a href="detail-buku.php?kd=<?php echo $row['id']; ?>">
+                                            <div class="box" style="border: 1px solid black; height: 234px">
+                                                <div class="box-body">
+                                                    <img src="<?php echo $row['gambar'] != "" ? $row['gambar'] : '../admin/gambar_buku/default.png'; ?>" style="width:100%; height:130px"/>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <?php echo $row['judul']; ?>
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    <?php 
+                                    if($no % 6 == 0){ 
+                                    ?>
+                                    </div>
+                                    <div class="row">
+                                <?php }
+                                $no++;
+                                } ?>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <?php } ?>
               <!-- row end -->
-                </section><!-- /.content -->
-                <div class="footer-main">
-                    Copyright &copy <a href="#" target="_blank">www.smkketintang.sch.id</a> 2019
-                </div>
+                </section>
+                
             </aside><!-- /.right-side -->
 
         </div><!-- ./wrapper -->
@@ -288,43 +270,7 @@ $_SESSION['start_time'] = time();
                 checkboxClass: 'icheckbox_flat-grey',
                 radioClass: 'iradio_flat-grey'
             });
-</script>
-<script type="text/javascript">
-    $(function() {
-                "use strict";
-                //BAR CHART
-                var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [65, 59, 80, 81, 56, 55, 40]
-                        },
-                        {
-                            label: "My Second dataset",
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [28, 48, 40, 19, 86, 27, 90]
-                        }
-                    ]
-                };
-            new Chart(document.getElementById("linechart").getContext("2d")).Line(data,{
-                responsive : true,
-                maintainAspectRatio: false,
-            });
+    </script>
 
-            });
-            // Chart.defaults.global.responsive = true;
-</script>
 </body>
 </html>

@@ -69,8 +69,8 @@ $_SESSION['start_time'] = time();
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-red"><i class="fa fa-user"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysqli_query($koneksi,"select * from data_anggota order by id desc");
-                        $total=mysqli_num_rows($tampil);
+                                <?php $tampil=mysql_query("select * from data_anggota order by id desc");
+                        $total=mysql_num_rows($tampil);
                     ?>
                                     <span><?php echo "$total"; ?></span>
                                     Total Anggota
@@ -81,8 +81,8 @@ $_SESSION['start_time'] = time();
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-violet"><i class="fa fa-book"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysqli_query($koneksi,"select * from data_buku order by id desc");
-                        $total1=mysqli_num_rows($tampil);
+                                <?php $tampil=mysql_query("select * from data_buku order by id desc");
+                        $total1=mysql_num_rows($tampil);
                     ?>
                                     <span><?php echo "$total1"; ?></span>
                                     Total Buku
@@ -93,8 +93,8 @@ $_SESSION['start_time'] = time();
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-blue"><i class="fa fa-refresh fa-spin fa-1x"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysqli_query($koneksi,"select * from trans_pinjam where status = 'pinjam' order by id desc");
-                        $total2=mysqli_num_rows($tampil);
+                                <?php $tampil=mysql_query("select * from trans_pinjam where status = 'pinjam' order by id desc");
+                        $total2=mysql_num_rows($tampil);
                     ?>
                                     <span><?php echo "$total2"; ?></span>
                                     Peminjaman Buku
@@ -105,8 +105,8 @@ $_SESSION['start_time'] = time();
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-green"><i class="fa fa-group"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysqli_query($koneksi,"select * from pengunjung where tgl_kunjung=curdate() order by id desc");
-										$total3=mysqli_num_rows($tampil);
+                                <?php $tampil=mysql_query("select * from pengunjung where tgl_kunjung=curdate() order by id desc");
+										$total3=mysql_num_rows($tampil);
 								?>
                                     <span><?php echo "$total3"; ?></span>
                                     Total Pengunjung Hari Ini
@@ -129,8 +129,8 @@ $_SESSION['start_time'] = time();
 
                                   <ul class="task-list">
                                   <?php
-                                  $tampil=mysqli_query($koneksi,"select * from data_buku order by id desc limit 1");
-                                  while($data6=mysqli_fetch_array($tampil)){
+                                  $tampil=mysql_query("select * from data_buku order by id desc limit 1");
+                                  while($data6=mysql_fetch_array($tampil)){
                                   ?>
                                       <li>
                                           
@@ -182,8 +182,8 @@ $_SESSION['start_time'] = time();
                                             </header>
                                                 <div class="panel-body" id="noti-box">
                                                 <?php
-                                                $tampil=mysqli_query($koneksi,"select * from data_anggota order by id desc limit 1");
-                                                while($data2=mysqli_fetch_array($tampil)){
+                                                $tampil=mysql_query("select * from data_anggota order by id desc limit 1");
+                                                while($data2=mysql_fetch_array($tampil)){
                                                 ?>
                                                     <div class="alert alert-block alert-danger">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
@@ -194,8 +194,8 @@ $_SESSION['start_time'] = time();
                                                     <?php } ?>
                                                     
                                                 <?php
-                                                $tampil=mysqli_query($koneksi,"select * from admin order by user_id desc limit 1");
-                                                while($data3=mysqli_fetch_array($tampil)){
+                                                $tampil=mysql_query("select * from admin order by user_id desc limit 1");
+                                                while($data3=mysql_fetch_array($tampil)){
                                                 ?>
                                                     <div class="alert alert-success">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
@@ -206,8 +206,8 @@ $_SESSION['start_time'] = time();
                                                 <?php } ?>
                                                     
                                                 <?php
-                                                $tampil=mysqli_query($koneksi,"select * from data_buku order by id desc limit 1");
-                                                while($data4=mysqli_fetch_array($tampil)){
+                                                $tampil=mysql_query("select * from data_buku order by id desc limit 1");
+                                                while($data4=mysql_fetch_array($tampil)){
                                                 ?>
                                                     <div class="alert alert-info">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
@@ -218,8 +218,8 @@ $_SESSION['start_time'] = time();
                                                 <?php } ?>
                                                    
                                                 <?php
-                                                $tampil=mysqli_query($koneksi,"select * from pengunjung order by id desc limit 1");
-                                                while($data5=mysqli_fetch_array($tampil)){
+                                                $tampil=mysql_query("select * from pengunjung order by id desc limit 1");
+                                                while($data5=mysql_fetch_array($tampil)){
                                                 ?>   
                                                     <div class="alert alert-warning">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
@@ -244,8 +244,8 @@ $_SESSION['start_time'] = time();
                                 <header class="panel-heading">
                                     Daftar Anggota Baru
                                 </header><?php
-                        $tampil=mysqli_query($koneksi,"select * from data_anggota order by id desc limit 3");
-                        while($data1=mysqli_fetch_array($tampil)){
+                        $tampil=mysql_query("select * from data_anggota order by id desc limit 3");
+                        while($data1=mysql_fetch_array($tampil)){
                         ?>
                                 <ul class="list-group teammates">
                                     <li class="list-group-item">

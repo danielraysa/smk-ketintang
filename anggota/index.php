@@ -177,7 +177,7 @@ $_SESSION['start_time'] = time();
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-blue"><i class="fa fa-refresh fa-spin fa-1x"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysql_query("select * from trans_pinjam order by id desc");
+                                <?php $tampil=mysql_query("select * from trans_pinjam where status = 'pinjam' order by id desc");
                         $total2=mysql_num_rows($tampil);
                     ?>
                                     <span><?php echo "$total2"; ?></span>
@@ -189,7 +189,7 @@ $_SESSION['start_time'] = time();
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-green"><i class="fa fa-group"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysql_query("select * from pengunjung order by id desc");
+                                <?php $tampil=mysql_query("select * from pengunjung where tgl_kunjung=curdate() order by id desc");
                         $total3=mysql_num_rows($tampil);
                     ?>
                                     <span><?php echo "$total3"; ?></span>

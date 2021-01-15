@@ -26,7 +26,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 		if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
 			$sql="INSERT INTO data_buku(id,kode,judul,pengarang,th_terbit,penerbit,kategori,kode_klas,jumlah_buku,lokasi,asal,jum_temp,tgl_input,gambar) VALUES
             (NULL,'$id','$judul','$pengarang','$th_terbit','$penerbit','$kategori','$kode_klas','$jumlah_buku','$lokasi','$asal','$jumlah_buku','$tgl_input','$gambar')";
-			$res=mysqli_query($koneksi,$sql) or die (mysqli_error($koneksi));
+			$res=mysql_query($sql) or die (mysql_error($koneksi));
 			echo "Gambar berhasil dikirim ke direktori".$gambar;
             echo "<h3><a href='input-buku.php'> Input Lagi</a></h3>";
             echo "<h3><a href='buku.php'> Data Buku</a></h3>";	   
@@ -40,7 +40,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
     $gambar = '';
 	$sql="INSERT INTO data_buku(id,kode,judul,pengarang,th_terbit,penerbit,kategori,kode_klas,jumlah_buku,lokasi,asal,jum_temp,tgl_input,gambar) VALUES
     (NULL,'$id','$judul','$pengarang','$th_terbit','$penerbit','$kategori','$kode_klas','$jumlah_buku','$lokasi','$asal','$jumlah_buku','$tgl_input','$gambar')";
-    $res=mysqli_query($koneksi,$sql) or die (mysqli_error($koneksi));
+    $res=mysql_query($sql) or die (mysql_error($koneksi));
     echo "Gambar berhasil dikirim ke direktori".$gambar;
     echo "<h3><a href='input-buku.php'> Input Lagi</a></h3>";
     echo "<h3><a href='buku.php'> Data Buku</a></h3>";

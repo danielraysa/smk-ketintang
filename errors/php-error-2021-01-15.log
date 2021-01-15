@@ -1,0 +1,53 @@
+[15-Jan-2021 22:40:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in C:\laragon\www\smk-ketintang\conn.php:10
+Stack trace:
+#0 C:\laragon\www\smk-ketintang\index.php(1): include()
+#1 {main}
+  thrown in C:\laragon\www\smk-ketintang\conn.php on line 10
+[15-Jan-2021 22:40:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in C:\laragon\www\smk-ketintang\conn.php:10
+Stack trace:
+#0 C:\laragon\www\smk-ketintang\index.php(1): include()
+#1 {main}
+  thrown in C:\laragon\www\smk-ketintang\conn.php on line 10
+[15-Jan-2021 22:40:53 Asia/Jakarta] PHP Fatal error:  Call to undefined function mysql_connect() in C:\laragon\www\smk-ketintang\conn.php on line 10
+[15-Jan-2021 22:41:10 Asia/Jakarta] PHP Fatal error:  Call to undefined function mysql_connect() in C:\laragon\www\smk-ketintang\conn.php on line 10
+[15-Jan-2021 22:41:19 Asia/Jakarta] PHP Fatal error:  Call to undefined function mysql_connect() in C:\laragon\www\smk-ketintang\conn.php on line 10
+[15-Jan-2021 22:42:56 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:56 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:56 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:56 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:56 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:42:57 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: jk in C:\laragon\www\smk-ketintang\index.php on line 334
+[15-Jan-2021 22:49:14 Asia/Jakarta] PHP Notice:  Undefined index: cari in C:\laragon\www\smk-ketintang\index.php on line 340
