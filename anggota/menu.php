@@ -27,6 +27,9 @@
                                         <li><a href="transaksi-kembali.php"><i class="fa fa-angle-double-right"></i> Transaksi Pengembalian</a></li>
                                     </ul>
                                 </li>
-
-
+                                <li class="">
+                                    <a href="usulan.php">
+                                        <i class="fa fa-question"></i> <span>Usulan</span>
+                                    </a>
+                                </li>
                             </ul>
