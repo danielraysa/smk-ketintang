@@ -146,7 +146,7 @@ tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " +
                             <?php
                     $tanggal = date("Y/m/d");
                     $query1="select * from pengunjung where tgl_kunjung='$tanggal'";
-                    $tampil=mysqli_query($koneksi,$query1) or die(mysqli_error($koneksi));
+                    $tampil=mysql_query($query1) or die(mysql_error());
                     ?>
                                 <table class="table table-hover">
                                   <thead>
@@ -159,7 +159,7 @@ tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " +
                                   </tr>
                               </thead>
                               
-                                 <?php while($data=mysqli_fetch_array($tampil))
+                                 <?php while($data=mysql_fetch_array($tampil))
                     { ?>
                     <tbody>
                     <tr>
@@ -173,8 +173,8 @@ tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " +
               ?>
               
                       </table><hr />
-                    <?php $tampil=mysqli_query($koneksi,"select * from pengunjung where tgl_kunjung='$tanggal'");
-                          $user=mysqli_num_rows($tampil);
+                    <?php $tampil=mysql_query("select * from pengunjung where tgl_kunjung='$tanggal'");
+                          $user=mysql_num_rows($tampil);
                     ?>
                   <center><h4>Jumlah Pengunjung Hari Ini : <?php echo "$user"; ?> Orang </h4> </center>
                 </div>
@@ -310,7 +310,7 @@ tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " +
                             <div class="panel-body table-responsive">
                             <?php
                     $query="select * from pengunjung order by id desc limit 10";
-                    $tampil=mysqli_query($koneksi,$query) or die(mysqli_error($koneksi));
+                    $tampil=mysql_query($query) or die(mysql_error());
                     ?>
                                 <table class="table table-hover">
                                   <thead>
@@ -326,7 +326,7 @@ tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " +
                                   </tr>
                               </thead>
                               
-                                 <?php while($data1=mysqli_fetch_array($tampil))
+                                 <?php while($data1=mysql_fetch_array($tampil))
                     { ?>
                     <tbody>
                     <tr>
@@ -343,8 +343,8 @@ tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " +
               ?>
               
                       </table><hr />
-                  <?php $tampil1=mysqli_query($koneksi,"select * from pengunjung order by id");
-                        $user1=mysqli_num_rows($tampil1);
+                  <?php $tampil1=mysql_query("select * from pengunjung order by id");
+                        $user1=mysql_num_rows($tampil1);
                     ?>
                   <center><h4>Jumlah Total Pengunjung : <?php echo "$user1"; ?> Orang </h4> </center>
                   </div>

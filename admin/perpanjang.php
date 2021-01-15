@@ -17,7 +17,7 @@ if($lambat > 7) {
 	$hari_next		= date("Y-m-d", $next_7_hari);
 
 
-	$update_tgl_kembali=mysqli_query($koneksi,"UPDATE trans_pinjam SET tgl_kembali='$hari_next' WHERE id='$id_transaksi'");
+	$update_tgl_kembali=mysql_query("UPDATE trans_pinjam SET tgl_kembali='$hari_next' WHERE id='$id_transaksi'");
 
 	if ($update_tgl_kembali) {
 		echo "<script>alert('Peminjaman buku berhasil diperpanjang!'); window.location = 'transaksi.php'</script>";

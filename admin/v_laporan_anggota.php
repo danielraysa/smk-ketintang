@@ -146,7 +146,7 @@ $_SESSION['start_time'] = time();
                                             $query1 .= "jurusan='$jurusan'";
                                         }
                                     }
-                    $tampil=mysqli_query($koneksi,$query1) or die(mysqli_error($koneksi));
+                    $tampil=mysql_query($query1) or die(mysql_error());
                     ?>
                                     <table id="example" class="table table-hover table-bordered">
                   <thead>
@@ -160,7 +160,7 @@ $_SESSION['start_time'] = time();
                         <th><center>Alamat </center></th>
                       </tr>
                   </thead>
-                     <?php while($data=mysqli_fetch_array($tampil))
+                     <?php while($data=mysql_fetch_array($tampil))
                     { ?>
                     <tbody>
                     <tr>
@@ -177,8 +177,8 @@ $_SESSION['start_time'] = time();
                    </tbody>
                    </table>
                    
-                  <?php $tampil=mysqli_query($koneksi,$query1);
-                        $user=mysqli_num_rows($tampil);
+                  <?php $tampil=mysql_query($query1);
+                        $user=mysql_num_rows($tampil);
                     ?>
                   <center><h4>Jumlah Anggota : <?php echo "$user"; ?> Orang </h4> </center>
                   

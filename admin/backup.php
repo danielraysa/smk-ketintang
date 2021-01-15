@@ -82,12 +82,12 @@ echo "<br><i>Daftar Tabel</i>";
  
 // query untuk menampilkan semua tabel dalam database
 $query = "SHOW TABLES";
-$hasil = mysqli_query($koneksi,$query);
+$hasil = mysql_query($query);
  
 // menampilkan semua tabel dalam form
 echo "<form method='post' action='proses-backup.php'>";
 echo "<table>";
-while ($data = mysqli_fetch_row($hasil))
+while ($data = mysql_fetch_row($hasil))
 {
    echo "<span class='glyphicon glyphicon-hdd'></span> &nbsp; $data[0]<br>";
 }

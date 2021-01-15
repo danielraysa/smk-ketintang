@@ -179,7 +179,7 @@ $_SESSION['start_time'] = time();
 	               AND tgl_pinjam like '%$qcari%'
 	               or tgl_kembali like '%$qcari%'  ";
                     }
-                    $tampil=mysqli_query($koneksi,$query1) or die(mysqli_error($koneksi));
+                    $tampil=mysql_query($query1) or die(mysql_error());
                     ?>
                                     <table id="example" class="table table-hover table-bordered">
                   <thead>
@@ -195,7 +195,7 @@ $_SESSION['start_time'] = time();
                   </thead>
                   <?php
                   $no=0;
-                      while($data=mysqli_fetch_array($tampil))
+                      while($data=mysql_fetch_array($tampil))
                     { $no++; ?>
                     <tbody>
                     <tr>

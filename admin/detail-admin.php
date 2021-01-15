@@ -72,8 +72,8 @@ $_SESSION['start_time'] = time();
                                 <!-- <div class="box-header"> -->
                                     <!-- <h3 class="box-title">Responsive Hover Table</h3> -->
                     <?php
-                    $query = mysqli_query($koneksi,"SELECT * FROM admin WHERE user_id='$_GET[kd]'");
-                    $data  = mysqli_fetch_array($query);
+                    $query = mysql_query("SELECT * FROM admin WHERE user_id='$_GET[kd]'");
+                    $data  = mysql_fetch_array($query);
                     ?>
                                 <!-- </div> -->
                                 <div class="panel-body">
@@ -99,8 +99,8 @@ $_SESSION['start_time'] = time();
                     </tr>
                    </table>
                   <!-- </div>-->
-                  <?php// $tampil=mysqli_query($koneksi,"select * from karyawan order by nip desc");
-                        //$user=mysqli_num_rows($tampil);
+                  <?php// $tampil=mysql_query("select * from karyawan order by nip desc");
+                        //$user=mysql_num_rows($tampil);
                     ?>
                    <!-- <center><h4>Jumlah Karyawan : <?php //echo "$user"; ?> Orang </h4> </center> -->
                 <div class="text-right">

@@ -156,8 +156,8 @@ $_SESSION['start_time'] = time();
                                 <!-- <div class="box-header"> -->
                                     <!-- <h3 class="box-title">Responsive Hover Table</h3> -->
                     <?php
-                    $query = mysqli_query($koneksi,"SELECT * FROM data_anggota WHERE id='$_GET[kd]'");
-                    $data  = mysqli_fetch_array($query);
+                    $query = mysql_query("SELECT * FROM data_anggota WHERE id='$_GET[kd]'");
+                    $data  = mysql_fetch_array($query);
                     ?>
                                 <!-- </div> -->
                                 <div class="panel-body">

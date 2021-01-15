@@ -2,7 +2,7 @@
 include "../conn.php";
 $id = $_GET['kd'];
 
-$query = mysqli_query($koneksi,"DELETE FROM data_buku WHERE id='$id'");
+$query = mysql_query("DELETE FROM data_buku WHERE id='$id'");
 if ($query){
 	echo "<script>alert('Data Berhasil dihapus!'); window.location = 'buku.php'</script>";	
 } else {

@@ -9,8 +9,8 @@ $judul		= isset($_GET['judul']) ? $_GET['judul'] : "";
 if ($id_trans==""||$judul=="") {
 	echo "<script>alert('Anda Belum Memilih Buku!'); window.location = 'transaksi.php'</script>";
 } else {
-	$us=mysqli_query($koneksi,"UPDATE trans_pinjam SET status='kembali' WHERE id='$id_trans'")or die ("Gagal update".mysqli_error($koneksi));
-	$uj=mysqli_query($koneksi,"UPDATE data_buku SET jum_temp=(jum_temp+1) WHERE id='$judul'")or die ("Gagal update".mysqli_error($koneksi));
+	$us=mysql_query("UPDATE trans_pinjam SET status='kembali' WHERE id='$id_trans'")or die ("Gagal update".mysql_error());
+	$uj=mysql_query("UPDATE data_buku SET jum_temp=(jum_temp+1) WHERE id='$judul'")or die ("Gagal update".mysql_error());
 
 	if ($us || $uj) {
 		echo "<script>alert('Buku telah dikembalikan'); window.location = 'transaksi.php'</script>";

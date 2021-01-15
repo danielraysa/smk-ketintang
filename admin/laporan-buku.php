@@ -16,7 +16,7 @@ require('../fpdf17/fpdf.php');
  **/
 //Menampilkan data dari tabel di database
 
-$result=mysqli_query($koneksi,"SELECT * FROM data_buku ORDER BY id ASC") or die(mysqli_error($koneksi));
+$result=mysql_query("SELECT * FROM data_buku ORDER BY id ASC") or die(mysql_error());
 
 //Inisiasi untuk membuat header kolom
 $column_judul = "";
@@ -30,7 +30,7 @@ $column_asal ="";
 
 
 //For each row, add the field to the corresponding column
-while($row = mysqli_fetch_array($result))
+while($row = mysql_fetch_array($result))
 {
 	$judul = $row["judul"];
     $pengarang = $row["pengarang"];

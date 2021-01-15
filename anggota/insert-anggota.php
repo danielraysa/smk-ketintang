@@ -22,7 +22,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 		if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
 			$sql="INSERT INTO data_anggota(id,no_induk,nama,jk,kelas,ttl,alamat,email,password,foto) VALUES
             ('$id','$no_induk','$nama','$jk','$kelas','$ttl','$alamat','$email','$password','$gambar')";
-			$res=mysqli_query($koneksi,$sql) or die (mysqli_error($koneksi));
+			$res=mysql_query($sql) or die (mysql_error());
 			echo "Gambar berhasil dikirim ke direktori".$gambar;
             echo "<h3><a href='../login-anggota.php'> Login</a></h3>";	   
 		} else {

@@ -17,7 +17,7 @@ $jam_kunjung = date('H:i:s');
 //}else{
 
 try{
-	$query = mysqli_query($koneksi,"INSERT INTO pengunjung (no_induk, nama, jurusan, kelas, perlu1, saran, tgl_kunjung, jam_kunjung) VALUES ('$no_induk', '$nama', '$jurusan', '$kelas', '$perlu1', '$saran', '$tgl_kunjung', '$jam_kunjung')");
+	$query = mysql_query("INSERT INTO pengunjung (no_induk, nama, jurusan, kelas, perlu1, saran, tgl_kunjung, jam_kunjung) VALUES ('$no_induk', '$nama', '$jurusan', '$kelas', '$perlu1', '$saran', '$tgl_kunjung', '$jam_kunjung')");
 } catch(Exception $e){
 	echo "<script>alert('Message:" . $e . "');</script>";
 }

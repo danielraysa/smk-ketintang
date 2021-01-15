@@ -93,7 +93,7 @@ $_SESSION['start_time'] = time();
 	               where fullname like '%$qcari%'
 	               or username like '%$qcari%'  ";
                     }
-                    $tampil=mysqli_query($koneksi,$query1) or die(mysqli_error($koneksi));
+                    $tampil=mysql_query($query1) or die(mysql_error());
                     ?>
                                     <table id="example" class="table table-hover table-bordered">
                   <thead>
@@ -106,7 +106,7 @@ $_SESSION['start_time'] = time();
                         <th><center>Tools</center></th>
                       </tr>
                   </thead>
-                     <?php while($data=mysqli_fetch_array($tampil))
+                     <?php while($data=mysql_fetch_array($tampil))
                     { ?>
                     <tbody>
                     <tr>

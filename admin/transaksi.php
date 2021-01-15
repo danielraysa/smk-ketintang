@@ -94,7 +94,7 @@ $_SESSION['start_time'] = time();
 	               and trans_pinjam.tgl_pinjam like '%$qcari%'
 	               or trans_pinjam.tgl_kembali like '%$qcari%'  ";
                     }
-                    $tampil=mysqli_query($koneksi,$query1) or die(mysqli_error($koneksi));
+                    $tampil=mysql_query($query1) or die(mysql_error());
                     ?>
                                     <table id="example" class="table table-hover table-bordered">
                   <thead>
@@ -111,7 +111,7 @@ $_SESSION['start_time'] = time();
                   </thead>
                   <?php
                   $no=0;
-                      while($data=mysqli_fetch_array($tampil))
+                      while($data=mysql_fetch_array($tampil))
                     { $no++; ?>
                     <tbody>
                     <tr>
@@ -144,8 +144,8 @@ $_SESSION['start_time'] = time();
                    </tbody>
                    </table>
                    
-                  <?php $tampil=mysqli_query($koneksi,"select * from trans_pinjam where status='pinjam' order by id");
-                        $pinjam=mysqli_num_rows($tampil);
+                  <?php $tampil=mysql_query("select * from trans_pinjam where status='pinjam' order by id");
+                        $pinjam=mysql_num_rows($tampil);
                     ?>
                   <center><h4>Jumlah Peminjam Buku : <?php echo "$pinjam"; ?> Orang </h4> </center>
                   

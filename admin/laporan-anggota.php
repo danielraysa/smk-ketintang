@@ -35,8 +35,8 @@ if (isset($_GET['submit'])) {
 }
 $query1 .= "ORDER BY id ASC";
 
-$result=mysqli_query($koneksi,$query1) or die(mysqli_error($koneksi));
-// $result=mysqli_query($koneksi,"SELECT * FROM data_anggota ORDER BY id ASC") or die(mysqli_error($koneksi));
+$result=mysql_query($query1) or die(mysql_error());
+// $result=mysql_query("SELECT * FROM data_anggota ORDER BY id ASC") or die(mysql_error());
 
 //Inisiasi untuk membuat header kolom
 //$column_id = "";
@@ -49,7 +49,7 @@ $column_alamat = "";
 
 
 //For each row, add the field to the corresponding column
-while($row = mysqli_fetch_array($result))
+while($row = mysql_fetch_array($result))
 {
 	//$id = $row["id"];
     $noinduk = $row["no_induk"];
