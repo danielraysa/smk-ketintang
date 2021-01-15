@@ -14,6 +14,8 @@ $alamat=$_POST['alamat'];
 $email=$_POST['email'];
 $password=$_POST['password'];
 $gambar = '';
+$cek_induk = mysqli_query($koneksi,"SELECT * FROM data_anggota WHERE no_induk = '$no_induk'");
+if(mysqli_num_rows($cek_induk) == 0){
 if (!empty($_FILES["nama_file"]["tmp_name"]))
 {
 	$jenis_gambar=$_FILES['nama_file']['type'];
@@ -42,6 +44,9 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 	 echo "<h3><a href='input-anggota.php'> Input Lagi</a></h3>";
 	 echo "<h3><a href='anggota.php'> Data Anggota</a></h3>";
 	// echo "Anda belum memilih gambar";
+}
+}else{
+	echo "Nomor Induk sudah ada!";
 }
 
 ?>

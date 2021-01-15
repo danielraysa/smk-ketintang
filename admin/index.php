@@ -93,7 +93,7 @@ $_SESSION['start_time'] = time();
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-blue"><i class="fa fa-refresh fa-spin fa-1x"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysqli_query($koneksi,"select * from trans_pinjam order by id desc");
+                                <?php $tampil=mysqli_query($koneksi,"select * from trans_pinjam where status = 'pinjam' order by id desc");
                         $total2=mysqli_num_rows($tampil);
                     ?>
                                     <span><?php echo "$total2"; ?></span>

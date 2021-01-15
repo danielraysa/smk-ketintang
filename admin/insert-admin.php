@@ -30,8 +30,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 		echo "Jenis gambar yang anda kirim salah. Harus .jpg .gif .png";
    }
 } else {
-	echo "Anda belum memilih gambar";
-	$gambar = null;
+	$gambar = '';
 	$sql="INSERT INTO admin(user_id,username,password,fullname,gambar) VALUES
 	('$user_id','$username','$password','$fullname','$gambar')";
 	$res=mysqli_query($koneksi,$sql) or die (mysqli_error($koneksi));

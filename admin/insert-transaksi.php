@@ -7,11 +7,16 @@ $pecah			= explode ("-", $dapat);
 $id				= $pecah[0];
 $buku			= $pecah[1];
 $nama			= isset($_POST['nama']) ? $_POST['nama'] : "";
+/* $peminjam		= isset($_POST['nama']) ? $_POST['nama'] : "";
+$pecah_peminjam	= explode ("-", $peminjam);
+$id_peminjam	= $pecah_peminjam[0];
+$nama			= $pecah_peminjam[1]; */
 $ket			= isset($_POST['keterangan']) ? $_POST['keterangan'] : "";
 
-	$sql = mysqli_query($koneksi,"SELECT count(id_peminjam) AS jumlah FROM trans_pinjam WHERE id_peminjam='$id' AND status='pinjam'");
-			if( $sql == 2){
-            echo "<script>alert('Maksimal pinjam 2 buku, silahkan kembalikan buku!'); window.location = 'input-transaksi.php'</script>";
+	// $sql = mysqli_query($koneksi,"SELECT count(id_peminjam) AS jumlah FROM trans_pinjam WHERE id_peminjam='$id' AND status='pinjam'");
+	$sql = mysqli_query($koneksi,"SELECT * FROM trans_pinjam WHERE nama_peminjam='$nama' AND status='pinjam'");
+			if( mysqli_num_rows($sql) > 3){
+            echo "<script>alert('Maksimal pinjam 3 buku, silahkan kembalikan buku!'); window.location = 'input-transaksi.php'</script>";
 			
 }elseif($tgl_kembali <= $tgl_pinjam){
 		echo "<script>alert('Tanggal kembali buku tidak boleh kurang dari atau sama dengan tanggal peminjaman buku!'); window.location = 'input-transaksi.php'</script>";			
@@ -34,7 +39,8 @@ $ket			= isset($_POST['keterangan']) ? $_POST['keterangan'] : "";
 		echo "<script>alert('Stock Buku Habis, Harap tunggu pengembalian buku!'); window.location = 'input-transaksi.php'</script>";
 	}else {
 	   
-		$qt			= mysqli_query($koneksi,"INSERT INTO trans_pinjam VALUES (null, '$buku', '$id', '$nama', '$tgl_pinjam', '$tgl_kembali', 'pinjam', '$ket')") or die ("Gagal Masuk".mysqli_error($koneksi));
+		// $qt			= mysqli_query($koneksi,"INSERT INTO trans_pinjam VALUES (null, '$id','$buku', '$id_peminjam', '$nama', '$tgl_pinjam', '$tgl_kembali', 'pinjam', '$ket')") or die ("Gagal Masuk".mysqli_error($koneksi));
+		$qt			= mysqli_query($koneksi,"INSERT INTO trans_pinjam VALUES (null, '$buku', '$id', '$nama', '$tgl_pinjam', '$tgl_kembali', 'pinjam', '$ket')") or die ("Gagal Masuk : ".mysqli_error($koneksi));
 
 		$qu			= mysqli_query($koneksi,"UPDATE data_buku SET jum_temp=(jum_temp-1) WHERE id=$id ");
 
