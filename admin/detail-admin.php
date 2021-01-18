@@ -99,7 +99,7 @@ $_SESSION['start_time'] = time();
                     </tr>
                    </table>
                   <!-- </div>-->
-                  <?php// $tampil=mysql_query("select * from karyawan order by nip desc");
+                  <?php // $tampil=mysql_query("select * from karyawan order by nip desc");
                         //$user=mysql_num_rows($tampil);
                     ?>
                    <!-- <center><h4>Jumlah Karyawan : <?php //echo "$user"; ?> Orang </h4> </center> -->

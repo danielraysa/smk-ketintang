@@ -7,7 +7,7 @@ ini_set("error_log", __DIR__."/errors/php-error-".date('Y-m-d').".log");
 error_reporting(E_ALL ^ E_DEPRECATED);
 $db_name = "perpusweb";
 
-mysql_connect("my-stage.cciibmbisxy8.ap-southeast-1.rds.amazonaws.com","admin","anel2204");
+mysql_connect("localhost","root","");
 mysql_select_db($db_name);
 
 //fungsi format rupiah 
