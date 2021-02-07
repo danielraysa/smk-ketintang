@@ -1,9 +1,27 @@
 <?php 
 session_start();
 if (empty($_SESSION['username'])){
-	header('location:../index.php');	
+	header('location:../index.php');
+    exit;
 } else {
 	include "../conn.php";
+    include "../session_check.php";
+}
+
+if(isset($_POST['simpan_usulan'])){
+    
+    $judul = $_POST['judul'];
+    $pengarang = $_POST['pengarang'];
+    $penerbit = $_POST['penerbit'];
+    $mata_pelajaran = $_POST['mata_pelajaran'];
+    $jumlah = $_POST['jumlah'];
+    $date = date('Y-m-d');
+    $id_user = $_SESSION['user_id'];
+    $insert = mysql_query("INSERT INTO usulan_buku(id_user,judul,pengarang,penerbit,mata_pelajaran,jumlah,tanggal_usulan) VALUES ('".$id_user."','".$judul."','".$pengarang."','".$penerbit."','".$mata_pelajaran."','".$jumlah."','".$date."')") or die(mysql_error());
+    if($insert){
+        $success = "Berhasil menambah usulan";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,21 +104,7 @@ if (empty($_SESSION['username'])){
                         </div>
                     </nav>
                 </header>
-                <?php
-$timeout = 10; // Set timeout minutes
-$logout_redirect_url = "../login-anggota.php"; // Set logout URL
-
-$timeout = $timeout * 60; // Converts minutes to seconds
-if (isset($_SESSION['start_time'])) {
-    $elapsed_time = time() - $_SESSION['start_time'];
-    if ($elapsed_time >= $timeout) {
-        session_destroy();
-        echo "<script>alert('Session Anda Telah Habis!'); window.location = '$logout_redirect_url'</script>";
-    }
-}
-$_SESSION['start_time'] = time();
-?>
-<?php } ?>
+                
                 <div class="wrapper row-offcanvas row-offcanvas-left">
                     <!-- Left side column. contains the logo and sidebar -->
                     <aside class="left-side sidebar-offcanvas">
@@ -150,9 +154,15 @@ $_SESSION['start_time'] = time();
                                 <!-- </div> -->
                                 <div class="panel-body">
                                     <div class="box-tools m-b-15">
-                                    
+                                        <?php
+                                        if(isset($success)):
+                                        ?>
+                                        <div class="alert alert-success" role="alert">
+                                            <a href="#" class="alert-link"><?= $success ?></a>
+                                        </div>
+                                        <?php endif; ?>
                                         <div class="col-lg-8 col-md-12">
-                                        <form action="#" class="form-horizontal" method="GET">
+                                        <form action="" class="form-horizontal" method="POST">
                                             <div class="form-group">
                                             <label>Judul</label>
                                                 <input type='text' class="form-control input-sm" style=""  name="judul"  required /> 

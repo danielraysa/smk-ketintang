@@ -4,6 +4,7 @@ $namafolder="../admin/gambar_buku/"; //tempat menyimpan file
 include "../conn.php";
 
 $id = $_POST['kode'];
+$no_ddc = $_POST['no_ddc'];
 $judul = $_POST['judul'];
 $pengarang = $_POST['pengarang'];
 $th_terbit = $_POST['th_terbit'];
@@ -24,8 +25,8 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 	{			
 		$gambar = $namafolder . basename($_FILES['nama_file']['name']);		
 		if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
-			$sql="INSERT INTO data_buku(id,kode,judul,pengarang,th_terbit,penerbit,kategori,kode_klas,jumlah_buku,lokasi,asal,jum_temp,tgl_input,gambar) VALUES
-            (NULL,'$id','$judul','$pengarang','$th_terbit','$penerbit','$kategori','$kode_klas','$jumlah_buku','$lokasi','$asal','$jumlah_buku','$tgl_input','$gambar')";
+			$sql="INSERT INTO data_buku(id,no_ddc,kode,judul,pengarang,th_terbit,penerbit,kategori,kode_klas,jumlah_buku,lokasi,asal,jum_temp,tgl_input,gambar) VALUES
+            (NULL,'$id','$no_ddc','$judul','$pengarang','$th_terbit','$penerbit','$kategori','$kode_klas','$jumlah_buku','$lokasi','$asal','$jumlah_buku','$tgl_input','$gambar')";
 			$res=mysql_query($sql) or die (mysql_error($koneksi));
 			echo "Gambar berhasil dikirim ke direktori".$gambar;
             echo "<h3><a href='input-buku.php'> Input Lagi</a></h3>";

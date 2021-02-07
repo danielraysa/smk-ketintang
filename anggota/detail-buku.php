@@ -4,6 +4,8 @@ if (empty($_SESSION['username'])){
 	header('location:../index.php');	
 } else {
 	include "../conn.php";
+    include "../session_check.php";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,21 +97,7 @@ if (empty($_SESSION['username'])){
                         </div>
                     </nav>
                 </header>
-                <?php
-$timeout = 10; // Set timeout minutes
-$logout_redirect_url = "../login-anggota.php"; // Set logout URL
-
-$timeout = $timeout * 60; // Converts minutes to seconds
-if (isset($_SESSION['start_time'])) {
-    $elapsed_time = time() - $_SESSION['start_time'];
-    if ($elapsed_time >= $timeout) {
-        session_destroy();
-        echo "<script>alert('Session Anda Telah Habis!'); window.location = '$logout_redirect_url'</script>";
-    }
-}
-$_SESSION['start_time'] = time();
-?>
-<?php } ?>
+                
                 <div class="wrapper row-offcanvas row-offcanvas-left">
                     <!-- Left side column. contains the logo and sidebar -->
                     <aside class="left-side sidebar-offcanvas">

@@ -58,21 +58,13 @@ include "../session_check.php";
                                 </div>
                                 <div class="panel-body">
                                     <form action="" method="get">
-                                        <label for="class">Tanggal Masuk Buku</label>
+                                        <label for="class">Tanggal Awal</label>
                                         <div class="input-group col-sm-6">
-                                            <select name="class" id="class" class="form-control">
-                                                <option value="">--- Pilih Kelas ---</option>
-                                                <option value="9a">9a</option>
-                                                <option value="9b">9b</option>
-                                                <option value="9c">9c</option>
-                                            </select>
+                                            <input type="date" name="tgl_awal" class="form-control" value="<?php if(isset($_GET['tgl_awal'])) echo $_GET['tgl_awal']; ?>" />
                                         </div>
-                                        <label for="jurusan">Jurusan</label>
+                                        <label for="jurusan">Tanggal Akhir</label>
                                         <div class="input-group col-sm-6">
-                                            <select name="jurusan" id="jurusan" class="form-control">
-                                                <option value="">--- Pilih Jurusan ---</option>
-                                                <option value="PTU">PTU</option>
-                                            </select>
+                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php if(isset($_GET['tgl_akhir'])) echo $_GET['tgl_akhir']; ?>" />
                                         </div>
                                         <br>
                                         <input type="submit" value="Filter" name="submit" class="btn btn-primary">
@@ -104,42 +96,40 @@ include "../session_check.php";
                                     </form>    
                                     </div>
                                     <?php
-                    $query1="select * from data_buku";
+                    $query1="SELECT * from usulan_buku u JOIN data_anggota p ON u.id_user = p.id";
                     
-                    if(isset($_POST['qcari'])){
-	               $qcari=$_POST['qcari'];
-	               $query1="SELECT * FROM  data_buku 
-	               where judul like '%$qcari%'
-	               or pengarang like '%$qcari%'  ";
+                    if(isset($_GET['submit'])){
+                        $tgl_awal = $_GET['tgl_awal'];
+                        $tgl_akhir = $_GET['tgl_akhir'];
+                        $query1="SELECT * FROM usulan_buku u JOIN data_anggota p ON u.id_user = p.id where u.tanggal_usulan BETWEEN '$tgl_awal' AND '$tgl_akhir'";
                     }
                     $tampil=mysql_query($query1) or die(mysql_error());
                     ?>
                                     <table id="example" class="table table-hover table-bordered">
                   <thead>
                       <tr>
+                        <th><center>No.</center></th>
+                        <th><center>Nama</center></th>
                         <th><center>Judul </center></th>
                         <th><center>Pengarang </center></th>
-                        <th><center>Tahun Terbit </center></th>
                         <th><center>Penerbit </center></th>
-                        <th><center>Jumlah Total </center></th>
-                        <th><center>Jumlah Stok </center></th>
-                        <th><center>Lokasi </center></th>
-                        <th><center>Aksi</center></th>
+                        <th><center>Tanggal Usulan</center></th>
                       </tr>
                   </thead>
-                     <?php while($data=mysql_fetch_array($tampil))
+                     <?php 
+                     $i = 1;
+                     while($data=mysql_fetch_array($tampil))
                     { ?>
                     <tbody>
                     <tr>
-                    <td><a href="detail-buku.php?hal=edit&kd=<?php echo $data['id'];?>"><span class="fa fa-book"></span> <?php echo $data['judul']; ?></a></td>
+                    <td><?php echo $i++; ?></td>
+                    <td><?php echo $data['nama']; ?></td>
+                    <td><?php echo $data['judul']; ?></td>
                     <td><?php echo $data['pengarang']; ?></td>
-                    <td><center><?php echo $data['th_terbit'];?></center></td>
                     <td><?php echo $data['penerbit'];?></td>
-                    <td><?php echo $data['jumlah_buku'];?></td>
-                    <td><?php echo $data['jum_temp'];?></td>
-                    <td><?php echo $data['lokasi'];?></td>
-                    <td><center><div id="thanks"><a class="btn btn-sm btn-primary" data-placement="bottom" data-toggle="tooltip" title="Edit Buku" href="edit-buku.php?hal=edit&kd=<?php echo $data['id'];?>"><span class="glyphicon glyphicon-edit"></span></a>
-                    <a onclick="return confirm ('Yakin hapus <?php echo $data['judul'];?>.?');" class="btn btn-sm btn-danger tooltips" data-placement="bottom" data-toggle="tooltip" title="Hapus Buku" href="hapus-buku.php?hal=hapus&kd=<?php echo $data['id'];?>"><span class="glyphicon glyphicon-trash"></a></center></td></tr></div>
+                    <td><?php echo $data['tanggal_usulan'];?></td>
+                    
+                    </tr>
                  
                     <?php   
               } 
@@ -147,14 +137,9 @@ include "../session_check.php";
                    </tbody>
                    </table>
                    
-                  <?php $tampil=mysql_query("select * from data_buku order by id");
-                        $buku=mysql_num_rows($tampil);
-                    ?>
-                  <center><h5>Jumlah Buku : <?php echo "$buku"; ?> Buku </h5> </center>
                   
-                <div class="text-right" style="margin-top: 10px;">
-                 <a href="buku.php" class="btn btn-sm btn-info">Refresh Buku <i class="fa fa-refresh"></i></a> <a href="input-buku.php" class="btn btn-sm btn-warning">Tambah Buku <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
+                  
+                
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>

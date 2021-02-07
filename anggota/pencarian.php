@@ -1,9 +1,70 @@
 <?php 
 session_start();
 if (empty($_SESSION['username'])){
-	header('location:../index.php');	
+    header('location:../index.php');	
+    exit;
 } else {
 	include "../conn.php";
+    include "../session_check.php";
+    include "../adj_similiarity.php";
+}
+$array_1 = [];
+$array_2 = [];
+$query1="SELECT id_peminjam as id_buku from trans_pinjam tp group by id_peminjam";
+$tampil=mysql_query($query1) or die(mysql_error());
+while($row = mysql_fetch_assoc($tampil)){
+    array_push($array_1, $row['id_buku']);
+}
+$query2="SELECT nama_peminjam as id_peminjam from trans_pinjam tp group by nama_peminjam";
+$tampil2=mysql_query($query2) or die(mysql_error());
+while($row = mysql_fetch_assoc($tampil2)){
+    array_push($array_2, $row['id_peminjam']);
+}
+
+$array2d = [];
+for($x = 0; $x < count($array_1); $x++){
+    for($y = 0; $y < count($array_2); $y++){
+        $query_row="SELECT COUNT(*) as total from trans_pinjam tp WHERE id_peminjam = ".$array_1[$x]." AND nama_peminjam = ".$array_2[$y]."";
+        $tampil_row=mysql_query($query_row) or die(mysql_error());
+        $rows = mysql_fetch_assoc($tampil_row);
+        $array2d[$x][$y] = $rows['total'];
+    }
+}
+
+$posisi_user = array_search($_SESSION['no_induk'], $array_2);
+
+$new_arr = arr_transpose($array2d);
+$rata = array_mean($array_1, $array_2, $array2d);
+$arr_w = array_sim($new_arr,$rata);
+$hitungan = [];
+// $id_buku = "";
+foreach($array2d[$posisi_user] as $b => $val){
+    if($val == 0){
+        // array_push($temp, $b);
+        $hitungan[$b] = weighted_sum($new_arr, $arr_w, $posisi_user, $b);
+    }
+    else{
+        $hitungan[$b] = "-";
+    }
+}
+/* foreach($array_1 as $pos => $buku){
+    if($array2d[$posisi_user][])
+    $hitungan[$pos] = weighted_sum($new_arr, $arr_w, $posisi_user, $pos);
+
+} */
+$buku_0 = zero_book($array2d, $posisi_user);
+// var_dump($buku_0);
+if(count($buku_0) != 1){
+    $id_buku = array_search(max($hitungan), $hitungan);
+}else{
+    $id_buku = $buku_0[0];
+}
+$buku = $array_1[$id_buku];
+
+$rekom_disp = 1;
+if(isset($_GET['cari'])){
+    $rekom_disp = 0;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,21 +147,7 @@ if (empty($_SESSION['username'])){
                         </div>
                     </nav>
                 </header>
-                <?php
-$timeout = 10; // Set timeout minutes
-$logout_redirect_url = "../login-anggota.php"; // Set logout URL
-
-$timeout = $timeout * 60; // Converts minutes to seconds
-if (isset($_SESSION['start_time'])) {
-    $elapsed_time = time() - $_SESSION['start_time'];
-    if ($elapsed_time >= $timeout) {
-        session_destroy();
-        echo "<script>alert('Session Anda Telah Habis!'); window.location = '$logout_redirect_url'</script>";
-    }
-}
-$_SESSION['start_time'] = time();
-?>
-<?php } ?>
+                
                 <div class="wrapper row-offcanvas row-offcanvas-left">
                     <!-- Left side column. contains the logo and sidebar -->
                     <aside class="left-side sidebar-offcanvas">
@@ -141,7 +188,7 @@ $_SESSION['start_time'] = time();
                         <div class="col-xs-12">
                             <div class="panel">
                                 <header class="panel-heading">
-                                    <b>Data Buku</b>
+                                    <b>Data Buku <?php //echo "rekomendasi buku : ".$buku; ?></b>
 
                                 </header>
                                 <!-- <div class="box-header"> -->
@@ -159,14 +206,35 @@ $_SESSION['start_time'] = time();
                                         </div>
                                     </form>
                                     </div>
-                                    Rekomendasi : .... , /// ,, ....
+                                    <?php
+                                    // if($rekom_disp==1){
+                                    $rekomendasi = "";
+                                    $data_rekom = mysql_query("SELECT * FROM data_buku WHERE id = '$buku'");
+                                    /* while($fet = mysql_fetch_assoc($data_rekom)){
+                                        $rekomendasi .= '<a href="detail-buku.php?kd='.$fet['id'].'">'.$fet['judul']."</a>, ";
+                                    } */
+                                    ?>
+                                    Rekomendasi Buku : <?php //echo $rekomendasi; ?>
+                                    <div style="display:flex">
+                                    <?php while($fet = mysql_fetch_assoc($data_rekom)){ ?>
+                                    <div class="box" style="border: 1px solid black; width:200px; height: 234px">
+                                        <div class="box-body">
+                                            <img src="<?php echo $fet['gambar'] != "" ? $fet['gambar'] : '../admin/gambar_buku/default.png'; ?>" style="width:100%; height:130px"/>
+                                        </div>
+                                        <div class="box-footer">
+                                            <?php echo $fet['judul']; ?>
+                                        </div>
+                                    </div>
+                                    <?php } 
+                                    //}?>
+                                </div>
                                 </div>
                             </div>  
                         </div>
                     </div>
                     
                     <?php 
-                    if(isset($_GET['cari'])){ 
+                    if(isset($_GET['cari'])){
                         $cari = $_GET['cari'];
                         $data = mysql_query("SELECT * FROM data_buku WHERE LOWER(judul) LIKE '%$cari%' OR UPPER(judul) LIKE '%$cari%' OR LOWER(pengarang) LIKE '%$cari%' OR UPPER(pengarang) LIKE '%$cari%' OR LOWER(penerbit) LIKE '%$cari%' OR UPPER(penerbit) LIKE '%$cari%'");
                     ?>
@@ -174,7 +242,8 @@ $_SESSION['start_time'] = time();
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel">
-                                <div class="panel-header" style="margin: auto">
+                                <div class="panel-header">
+                                <h4 style="margin: 1rem">Hasil Pencarian</h4>
                                 </div>
                                 <div class="panel-body table-responsive">
                                     <div class="row">

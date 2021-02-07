@@ -10,20 +10,11 @@ if (empty($_SESSION['username'])){
 <?php include "head.php"; ?>
       <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
-<?php include "header.php"; ?>
-                <?php
-$timeout = 10; // Set timeout minutes
-$logout_redirect_url = "../login.html"; // Set logout URL
+<?php include "header.php";
+include "../session_check.php";
 
-$timeout = $timeout * 60; // Converts minutes to seconds
-if (isset($_SESSION['start_time'])) {
-    $elapsed_time = time() - $_SESSION['start_time'];
-    if ($elapsed_time >= $timeout) {
-        session_destroy();
-        echo "<script>alert('Session Anda Telah Habis!'); window.location = '$logout_redirect_url'</script>";
-    }
-}
-$_SESSION['start_time'] = time();
+$jml_buku = mysql_query("SELECT * FROM data_buku");
+$count_buku = mysql_num_rows($jml_buku);
 ?>
 <?php } ?>
                 <div class="wrapper row-offcanvas row-offcanvas-left">
@@ -78,20 +69,26 @@ $_SESSION['start_time'] = time();
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Kode Buku</label>
                               <div class="col-sm-8">
-                                  <input name="kode" type="text" id="id" class="form-control" placeholder="Harus Di Isi" autofocus="on" required=""/>
-								  <label> Harus diisi, Contoh : 001.002. Contoh tersebut 3 digit awal 001 adalah nomor kategori buku agama, kemudian 3 digit 002 adalah urutan buku</label>
+                                  <input name="kode" type="text" id="id" class="form-control" placeholder="Harus Di Isi" autofocus="on" required="" readonly/>
+								  <!-- <label> Harus diisi, Contoh : 001.002. Contoh tersebut 3 digit awal 001 adalah nomor kategori buku agama, kemudian 3 digit 002 adalah urutan buku</label> -->
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">No. DDC</label>
+                              <div class="col-sm-8">
+                                  <input name="no_ddc" type="text" id="no_ddc" class="form-control" autocomplete="off" placeholder="No. DDC" required="" onchange="generateId()"/>
                               </div>
                           </div>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Judul</label>
                               <div class="col-sm-8">
-                                  <input name="judul" type="text" id="judul" class="form-control" autocomplete="off" placeholder="Judul Buku" required="" />
+                                  <input name="judul" type="text" id="judul" class="form-control" autocomplete="off" placeholder="Judul Buku" required="" onchange="generateId()"/>
                               </div>
                           </div>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Pengarang</label>
                               <div class="col-sm-8">
-                                  <input name="pengarang" type="text" id="pengarang" class="form-control" autocomplete="off" placeholder="Pengarang" required="" />
+                                  <input name="pengarang" type="text" id="pengarang" class="form-control" autocomplete="off" placeholder="Pengarang" required="" onchange="generateId()"/>
                               </div>
                           </div>
                           <div class="form-group">
@@ -137,9 +134,16 @@ $_SESSION['start_time'] = time();
                               </div>
                           </div>
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Lokasi</label>
-                              <div class="col-sm-8">
-                                  <input name="lokasi" type="text" id="lokasi" class="form-control" autocomplete="off" placeholder="Lokasi Buku" required />
+                              <label class="col-sm-2 col-sm-2 control-label">Lokasi Rak</label>
+                              <div class="col-sm-4">
+                                    <select name="lokasi" id="lokasi" class="form-control" autocomplete="off" placeholder="Lokasi Buku" required onchange="generateId()">
+                                    <option value=""> -- Pilih Salah Satu --</option>
+                                        <option value="Rak H1" data-id="H1">Rak H1</option>
+                                        <option value="Rak A3" data-id="A3">Rak A3</option>
+                                        <option value="Rak A2" data-id="A2">Rak A2</option>
+                                        <option value="Rak A1" data-id="A1">Rak A1</option>
+                                    </select>
+                                  <!-- <input name="lokasi" type="text" id="lokasi" class="form-control" autocomplete="off" placeholder="Lokasi Buku" required /> -->
                               </div>
                           </div>
                           <div class="form-group">
@@ -247,43 +251,22 @@ $_SESSION['start_time'] = time();
                 checkboxClass: 'icheckbox_flat-grey',
                 radioClass: 'iradio_flat-grey'
             });
-</script>
-<script type="text/javascript">
-    $(function() {
-                "use strict";
-                //BAR CHART
-                var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [65, 59, 80, 81, 56, 55, 40]
-                        },
-                        {
-                            label: "My Second dataset",
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [28, 48, 40, 19, 86, 27, 90]
-                        }
-                    ]
-                };
-            new Chart(document.getElementById("linechart").getContext("2d")).Line(data,{
-                responsive : true,
-                maintainAspectRatio: false,
-            });
 
-            });
-            // Chart.defaults.global.responsive = true;
-</script>
+            function generateId(){
+                var jml_buku = <?php echo json_encode($count_buku); ?>;
+                var ddc = $('#no_ddc').val();
+                var judul = $('#judul').val();
+                var pengarang = $('#pengarang').val();
+                var lokasi = $('#lokasi').find(":selected").attr('data-id');
+                if(!lokasi){
+                    lokasi = "";
+                }
+                var hasil = ddc+pengarang.substr(0,3)+judul.substr(0,1)+lokasi;
+                $('#id').val(hasil);
+                // alert(hasil);
+                // return hasil;
+            }
+        </script>
+
 </body>
 </html>

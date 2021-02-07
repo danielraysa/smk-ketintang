@@ -10,20 +10,9 @@ if (empty($_SESSION['username'])){
 <?php include "head.php"; ?>
       <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
-<?php include "header.php"; ?>
-                <?php
-$timeout = 10; // Set timeout minutes
-$logout_redirect_url = "../login.html"; // Set logout URL
+<?php include "header.php";
+include "../session_check.php";
 
-$timeout = $timeout * 60; // Converts minutes to seconds
-if (isset($_SESSION['start_time'])) {
-    $elapsed_time = time() - $_SESSION['start_time'];
-    if ($elapsed_time >= $timeout) {
-        session_destroy();
-        echo "<script>alert('Session Anda Telah Habis!'); window.location = '$logout_redirect_url'</script>";
-    }
-}
-$_SESSION['start_time'] = time();
 ?>
 <?php } ?>
                 <div class="wrapper row-offcanvas row-offcanvas-left">
@@ -134,7 +123,7 @@ $_SESSION['start_time'] = time();
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Keterangan</label>
                               <div class="col-sm-8">
-                                  <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Keterangan" required>
+                                  <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Keterangan" >
                                   <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                               </div>
                           </div>

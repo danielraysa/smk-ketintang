@@ -12,13 +12,13 @@ $password = mysql_real_escape_string($password);
 
 if (empty($username) && empty($password)) {
 	header('location:login-anggota.html?error1');
-	break;
+	exit;
 } else if (empty($username)) {
 	header('location:login-anggota.html?error=2');
-	break;
+	exit;
 } else if (empty($password)) {
 	header('location:login-anggota.html?error=3');
-	break;
+	exit;
 }
 
 $q = mysql_query("select * from data_anggota where email='$username' and password='$password'");
@@ -29,10 +29,11 @@ if (mysql_num_rows($q) == 1) {
     $_SESSION['no_induk'] = $row['no_induk'];
 	$_SESSION['username'] = $username;
 	$_SESSION['fullname'] = $row['nama'];
-    $_SESSION['gambar'] = $row['foto'];	
-
+    $_SESSION['gambar'] = $row['foto'];
 	header('location:anggota/index.php');
+	exit;
 } else {
 	header('location:login-anggota.php?error=4');
+	exit;
 }
 ?>

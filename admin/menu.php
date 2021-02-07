@@ -56,7 +56,7 @@
                                 <li class="treeview">
                                 <a href="#">
                                     <i class="fa fa-file"></i>
-                                    <span>laporan</span>
+                                    <span>Laporan</span>
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </a>
                                     <ul class="treeview-menu">
@@ -64,6 +64,7 @@
                                         <li><a href="v_laporan_buku.php"><i class="fa fa-angle-double-right"></i> Laporan Buku</a></li>
                                         <li><a href="v_laporan_transaksi.php"><i class="fa fa-angle-double-right"></i> Laporan Transaksi</a></li>
                                         <li><a href="v_laporan_pengunjung.php"><i class="fa fa-angle-double-right"></i> Laporan Pengunjung</a></li>
+                                        <li><a href="v_laporan_usulan.php"><i class="fa fa-angle-double-right"></i> Laporan Usulan</a></li>
                                     </ul>
                                 </li>
                                 <li>
