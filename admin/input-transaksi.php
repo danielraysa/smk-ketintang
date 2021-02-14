@@ -120,13 +120,12 @@ include "../session_check.php";
                                   <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                               </div>
                           </div>
-                          <div class="form-group">
+                          <!-- <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Keterangan</label>
                               <div class="col-sm-8">
                                   <input type="text" id="keterangan" name="keterangan" class="form-control" placeholder="Keterangan" >
-                                  <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                               </div>
-                          </div>
+                          </div> -->
                           <div class="form-group" style="margin-bottom: 20px;">
                               <label class="col-sm-2 col-sm-2 control-label"></label>
                               <div class="col-sm-8">

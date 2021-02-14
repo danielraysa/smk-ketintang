@@ -73,11 +73,19 @@ include "../session_check.php";
                     
                     </tr>
                     <tr>
-                    <td width="250">Judul</td>
-                    <td width="500"><?php echo $data['judul']; ?></td>
+                    <td width="250">Kode Buku</td>
+                    <td width="500"><?php echo $data['kode']; ?></td>
 					<td rowspan="6"><div class="pull-right image">
                             <img src="<?php echo $data['gambar']; ?>" class="img-rounded" height="200" width="150" alt="User Image" style="border: 3px solid #333333;" />
                         </div></td>
+                    </tr>
+                    <tr>
+                    <td>Judul</td>
+                    <td><?php echo $data['judul']; ?></td>
+                    </tr>
+                    <tr>
+                    <td>No. DDC</td>
+                    <td><?php echo $data['no_ddc']; ?></td>
                     </tr>
                     <tr>
                     <td>Pengarang</td>
@@ -99,11 +107,11 @@ include "../session_check.php";
                     </tr>-->
                     <tr>
                     <td>Kategori</td>
-                    <td><?php echo $data['kategori']; ?></td>
+                    <td colspan="2"><?php echo $data['kategori']; ?></td>
                     </tr>
                     <tr>
                     <td>Kelas</td>
-                    <td><?php echo $data['kode_klas']; ?></td>
+                    <td colspan="2"><?php echo $data['kode_klas']; ?></td>
                     </tr>
                     <tr>
                     <td>Jumlah Total Buku</td>
@@ -143,7 +151,7 @@ include "../session_check.php";
 
 
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="../js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->

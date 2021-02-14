@@ -19,9 +19,9 @@ while($row = mysql_fetch_assoc($tampil2)){
 // var_dump($array_1);
 // var_dump($array_2);
 $array2d = [];
-for($x = 0; $x < count($array_1); $x++){
-    for($y = 0; $y < count($array_2); $y++){
-        $query_row="SELECT COUNT(*) as total from trans_pinjam tp WHERE id_peminjam = ".$array_1[$x]." AND nama_peminjam = ".$array_2[$y]."";
+for($x = 0; $x < count($array_2); $x++){
+    for($y = 0; $y < count($array_1); $y++){
+        $query_row="SELECT COUNT(*) as total from trans_pinjam tp WHERE id_peminjam = ".$array_1[$y]." AND nama_peminjam = ".$array_2[$x]."";
         $tampil_row=mysql_query($query_row) or die(mysql_error());
         $rows = mysql_fetch_assoc($tampil_row);
         $array2d[$x][$y] = $rows['total'];
@@ -41,12 +41,12 @@ $rata = [];
 <td>Rata2</td>
 </tr>
 <?php
-for($x = 0; $x < count($array_1); $x++){
+for($x = 0; $x < count($array_2); $x++){
     $temp_rata = 0;
     $temp_divider = 0;
     echo "<tr>";
     echo "<td>usr ".$array_2[$x]."</td>";
-    for($y = 0; $y < count($array_2); $y++){
+    for($y = 0; $y < count($array_1); $y++){
         if($array2d[$x][$y] != 0){
             $temp_rata += $array2d[$x][$y];
             $temp_divider += 1;
@@ -64,6 +64,7 @@ for($x = 0; $x < count($array_1); $x++){
 // var_dump($array2d[0]);
 // var_dump($array2d[1]);
 $new_arr = arr_transpose($array2d);
+// $new_arr = $array2d;
 ?>
 <?php 
 
@@ -94,8 +95,8 @@ for($z=0;$z< count($arr_w); $z++){
 </table>
 <?php 
 
-echo "w(user 3, buku 1) =  ".weighted_sum($new_arr, $arr_w, 2, 0)."<br>";
-echo "w(user 3, buku 2) =  ".weighted_sum($new_arr, $arr_w, 2, 1)."<br>";
-echo "w(user 3, buku 3) =  ".weighted_sum($new_arr, $arr_w, 2, 2)."<br>";
-echo "w(user 3, buku 4) =  ".weighted_sum($new_arr, $arr_w, 2, 3)."<br>";
+echo "w(user 3, buku 1) =  ".weighted_sum($new_arr, $arr_w, 0, 0)."<br>";
+echo "w(user 3, buku 2) =  ".weighted_sum($new_arr, $arr_w, 0, 1)."<br>";
+echo "w(user 3, buku 3) =  ".weighted_sum($new_arr, $arr_w, 0, 2)."<br>";
+echo "w(user 3, buku 4) =  ".weighted_sum($new_arr, $arr_w, 0, 3)."<br>";
 ?>

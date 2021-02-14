@@ -35,7 +35,7 @@ if (empty($_SESSION['username'])){
     <link href="../css/iCheck/all.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <!-- <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" /> -->
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <!-- Theme style -->
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 
@@ -177,7 +177,7 @@ if (empty($_SESSION['username'])){
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-green"><i class="fa fa-group"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysql_query("select * from pengunjung where tgl_kunjung=curdate() order by id desc");
+                                <?php $tampil=mysql_query("select * from pengunjung where tgl_kunjung='".date('Y-m-d')."' order by id desc");
                         $total3=mysql_num_rows($tampil);
                     ?>
                                     <span><?php echo "$total3"; ?></span>
@@ -322,7 +322,7 @@ if (empty($_SESSION['username'])){
 
 
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="../js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->

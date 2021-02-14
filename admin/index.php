@@ -94,7 +94,7 @@ include "../session_check.php";
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-green"><i class="fa fa-group"></i></span>
                                 <div class="sm-st-info">
-                                <?php $tampil=mysql_query("select * from pengunjung where tgl_kunjung=curdate() order by id desc");
+                                <?php $tampil=mysql_query("select * from pengunjung where tgl_kunjung='".date('Y-m-d')."' order by id desc");
 										$total3=mysql_num_rows($tampil);
 								?>
                                     <span><?php echo "$total3"; ?></span>
@@ -262,7 +262,7 @@ include "../session_check.php";
 
 
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="../js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->

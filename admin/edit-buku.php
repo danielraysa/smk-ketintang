@@ -106,7 +106,7 @@ include "../session_check.php";
                           <!--<div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">ISBN</label>
                               <div class="col-sm-8">
-                                  <input name="isbn" type="text" id="isbn" class="form-control" autocomplete="off" value="<?php echo $data['isbn']; ?>" required="" />
+                                  <input name="isbn" type="text" id="isbn" class="form-control" autocomplete="off" value="<?php //echo $data['isbn']; ?>" required="" />
                               </div>
                           </div>-->
                           <div class="form-group">
@@ -192,7 +192,7 @@ include "../session_check.php";
 
 
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="../js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->

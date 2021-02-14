@@ -42,6 +42,12 @@ function rootSquare(array $arr_a, array $arr_b, array $arr_mean){
 function weighted_sum(array $arr_a, array $arr_b, $pos_user, $pos_buku){
     $top = topWeighted($arr_a, $arr_b, $pos_user,$pos_buku);
     $div = divWeighted($arr_b, $pos_buku);
+    /* if($top == 0 || $div == 0){
+        echo "top : ".$top."<br>div : ".$div."<br>";
+    } */
+    if($div == 0){
+        return 0;
+    }
     return $top / $div;
 }
 
@@ -73,17 +79,25 @@ function divWeighted(array $arr_a, $pos){
     return $sum_div;
 }
 
-function arr_transpose($array) {
-    return array_map(null, ...$array);
+function arr_transpose($array_one) {
+    $array_transpose = [];
+    foreach ($array_one as $key => $item) {
+        foreach ($item as $subkey => $subitem) {
+            $array_transpose[$subkey][$key] = $subitem;
+        }
+    }
+    return $array_transpose;
 }
-
+/* function arr_transpose($array) {
+    return array_map(null, ...$array);
+} */
 
 function array_mean(array $array_1, array $array_2, array $array2d){
     $rata = [];
-    for($x = 0; $x < count($array_1); $x++){
+    for($x = 0; $x < count($array_2); $x++){
         $temp_rata = 0;
         $temp_divider = 0;
-        for($y = 0; $y < count($array_2); $y++){
+        for($y = 0; $y < count($array_1); $y++){
             if($array2d[$x][$y] != 0){
                 $temp_rata += $array2d[$x][$y];
                 $temp_divider += 1;

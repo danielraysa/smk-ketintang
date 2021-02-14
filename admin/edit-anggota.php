@@ -111,22 +111,21 @@ include "../session_check.php";
                               <label class="col-sm-2 col-sm-2 control-label"> Jurusan </label>
                               <div class="col-sm-3">
                                   <select class="form-control" name="jurusan" id="jurusan">
-                                  <option><?php echo $data['jurusan']; ?></option>
-                                  <option value="AKL1"> AKL 1</option>
-                                  <option value="AKL2"> AKL 2</option>
-                                  <option value="AKL3"> AKL 3</option>
-                                  <option value="AKL4"> AKL 4</option>
-                                  <option value="OTKP1"> OTKP 1</option>
-                                  <option value="OTKP2"> OTKP 2</option>
-                                  <option value="OTKP3"> OTKP 3</option>
-                                  <option value="OTKP4"> OTKP 4</option>
-                                  <option value="OTKP5"> OTKP 5</option>
-                                  <option value="BDP1"> BDP 1</option>
-                                  <option value="BDP2"> BDP 2</option>
-                                  <option value="TKJ1"> TKJ 1</option>
-                                  <option value="TKJ2"> TKJ 2</option>
-                                  <option value="MM1"> MM 1</option>
-                                  <option value="MM2"> MM 2</option>
+                                  <option <?php if($data['jurusan'] == "AKL1") echo 'selected'; ?> value="AKL1"> AKL 1</option>
+                                  <option <?php if($data['jurusan'] == "AKL2") echo 'selected'; ?> value="AKL2"> AKL 2</option>
+                                  <option <?php if($data['jurusan'] == "AKL3") echo 'selected'; ?> value="AKL3"> AKL 3</option>
+                                  <option <?php if($data['jurusan'] == "AKL4") echo 'selected'; ?> value="AKL4"> AKL 4</option>
+                                  <option <?php if($data['jurusan'] == "OTKP1") echo 'selected'; ?> value="OTKP1"> OTKP 1</option>
+                                  <option <?php if($data['jurusan'] == "OTKP2") echo 'selected'; ?> value="OTKP2"> OTKP 2</option>
+                                  <option <?php if($data['jurusan'] == "OTKP3") echo 'selected'; ?> value="OTKP3"> OTKP 3</option>
+                                  <option <?php if($data['jurusan'] == "OTKP4") echo 'selected'; ?> value="OTKP4"> OTKP 4</option>
+                                  <option <?php if($data['jurusan'] == "OTKP5") echo 'selected'; ?> value="OTKP5"> OTKP 5</option>
+                                  <option <?php if($data['jurusan'] == "BDP1") echo 'selected'; ?> value="BDP1"> BDP 1</option>
+                                  <option <?php if($data['jurusan'] == "BDP2") echo 'selected'; ?> value="BDP2"> BDP 2</option>
+                                  <option <?php if($data['jurusan'] == "TKJ1") echo 'selected'; ?> value="TKJ1"> TKJ 1</option>
+                                  <option <?php if($data['jurusan'] == "TKJ2") echo 'selected'; ?> value="TKJ2"> TKJ 2</option>
+                                  <option <?php if($data['jurusan'] == "MM1") echo 'selected'; ?> value="MM1"> MM 1</option>
+                                  <option <?php if($data['jurusan'] == "MM2") echo 'selected'; ?> value="MM2"> MM 2</option>
                                   </select>
                               </div>
                           </div>
@@ -184,7 +183,7 @@ include "../session_check.php";
 
 
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="../js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->

@@ -67,7 +67,7 @@
                                         <li><a href="v_laporan_usulan.php"><i class="fa fa-angle-double-right"></i> Laporan Usulan</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="backup.php">
                                         <i class="fa fa-check-square"></i> <span>Backup Data</span>
                                     </a>
@@ -76,7 +76,7 @@
                                     <a href="tentang.php">
                                         <i class="fa fa-envelope"></i> <span>Tentang PerPusWeb</span>
                                     </a>
-                                </li>
+                                </li> -->
 
 
                             </ul>

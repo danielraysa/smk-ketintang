@@ -13,7 +13,7 @@ $ttl = $_POST['ttl'];
 $alamat=$_POST['alamat'];
 $email=$_POST['email'];
 $password=$_POST['password'];
-$gambar = '';
+$gambar = '../admin/gambar_anggota/user.jpg';
 $cek_induk = mysql_query("SELECT * FROM data_anggota WHERE no_induk = '$no_induk'");
 if(mysql_num_rows($cek_induk) == 0){
 if (!empty($_FILES["nama_file"]["tmp_name"]))
